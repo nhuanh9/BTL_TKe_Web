@@ -6,10 +6,6 @@
     <script src="js/jquery-3.5.1.js"></script>
     <link rel="stylesheet" href="css/css.css">
     <script type="text/javascript" src="js/js.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <style>
         ul {
             margin: 0px !important;
@@ -35,7 +31,8 @@
     </style>
     <script src="https://kit.fontawesome.com/4866413e08.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body onload="loadData()">
+<h1>Hello</h1>
 	<div class="container-fluid">
         <div class="row mb-2">
             <div class="col-md-3 text-center">
@@ -182,36 +179,84 @@
             </div>
         </div>
     </footer>
-
     <script>
     class Product {
-        constructor(ten, gia, anh) {
+        constructor(id, ten, gia, anh) {
+            this.id = id;
             this.ten = ten;
             this.gia = gia;
             this.anh = anh;
         }
     }
 
-    let p1 = new Product("LuCi", 1000, "img/1.jpg");
-    let p2 = new Product("MewTwo", 2000, "img/2.jpg");
-    let p3 = new Product("Pikachu", 600, "img/3.jpg");
-    let p4 = new Product("Garen", 300, "img/4.jpg");
-    let p5 = new Product("Rengar", 1600, "img/5.jpg");
-    let p6 = new Product("Yasuo", 1800, "img/6.jpg");
-    let p7 = new Product("Ziggs", 2000, "img/7.jpg");
-    let p8 = new Product("LuLi", 1200, "img/8.jpg");
+    let p1 = new Product(1, "LuCi", 1000, "img/1.jpg");
+    let p2 = new Product(2, "MewTwo", 2000, "img/2.jpg");
+    let p3 = new Product(3, "Pikachu", 600, "img/3.jpg");
+    let p4 = new Product(4, "Garen", 300, "img/4.jpg");
+    let p5 = new Product(5, "Rengar", 1600, "img/5.jpg");
+    let p6 = new Product(6, "Yasuo", 1800, "img/6.jpg");
+    let p7 = new Product(7, "Ziggs", 2000, "img/7.jpg");
+    let p8 = new Product(8, "LuLi", 1200, "img/8.jpg");
     let arrProduct = [p1, p2, p3, p4, p5, p6, p7, p8];
     let str = '';
-    for (let i=0; i<arrProduct.length; i++) {
-        str+='<div class="col-xl-4 col-md-6  mb-3 text-center"><div class="card" style="width: 100%;">\n' +
-            '  <img class="card-img-top" width="100%" height="250px" src='+arrProduct[i].anh+' alt="Card image cap">\n' +
-            '  <div class="card-body">\n' +
-            '    <h5 class="card-title">'+arrProduct[i].ten+'</h5>\n' +
-            '    <a href="#" class="btn btn-primary">View</a>\n' +
-            '  </div>\n' +
-            '</div></div>'
+    function loadData() {
+        let str = '';
+        for (let i=0; i<arrProduct.length; i++) {
+            str+='<div class="col-xl-4 col-md-6  mb-3 text-center"><div class="card" style="width: 100%;">\n' +
+                '  <img class="card-img-top" width="100%" height="250px" src='+arrProduct[i].anh+' alt="Card image cap">\n' +
+                '  <div class="card-body">\n' +
+                '    <h5 class="card-title">'+arrProduct[i].ten+'</h5>\n' +
+                '    <!-- Button trigger modal -->\n' +
+                '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal'+i+'">\n' +
+                '  Edit\n' +
+                '</button>\n' +
+                '\n' +
+                '<!-- Modal -->\n' +
+                '<div class="modal fade" id="exampleModal'+i+'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
+                '  <div class="modal-dialog" role="document">\n' +
+                '    <div class="modal-content">\n' +
+                '      <div class="modal-header">\n' +
+                '        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>\n' +
+                '        <button type="button" class="close" data-dismiss="modal" aria-label="Close">\n' +
+                '          <span aria-hidden="true">&times;</span>\n' +
+                '        </button>\n' +
+                '      </div>\n' +
+                '      <div class="modal-body">\n' +
+                '        <form>\n' +
+                '  <div class="form-group">\n' +
+                '    <label for="exampleInputEmail'+i+'">Sửa thông tin</label>\n' +
+                '    <input type="text" class="form-control" id="exampleInputEmail'+i+'" aria-describedby="emailHelp" placeholder="'+arrProduct[i].ten+'">\n' +
+                '  </div>\n' +
+                '  <div class="form-group">\n' +
+                '    <input type="text" class="form-control" id="exampleInputPassword'+i+'" placeholder="'+arrProduct[i].gia+'">\n' +
+                '  </div>\n' +
+                '</form>' +
+                '      </div>\n' +
+                '      <div class="modal-footer">\n' +
+                '        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>\n' +
+                '        <button type="button" class="btn btn-primary" onclick="edit('+i+')" data-dismiss="modal">Save changes</button>\n' +
+                '      </div>\n' +
+                '    </div>\n' +
+                '  </div>\n' +
+                '</div>\n' +
+                '  </div>\n' +
+                '</div></div>'
+        }
+        document.getElementById('giua').innerHTML = str;
     }
-    document.getElementById('giua').innerHTML = str;
+    function clearData() {
+        document.getElementById('giua').innerHTML = " ";
+    }
+    function edit(id) {
+        arrProduct[id].ten = document.getElementById('exampleInputEmail'+id+'').value;
+        arrProduct[id].gia = document.getElementById('exampleInputPassword'+id+'').value;
+        clearData();
+        loadData();
+    }
 </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
