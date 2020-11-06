@@ -5,12 +5,15 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Tổng tiền: <p id="sum"></p></h1>
-<h1>Số lượng: <p id="count"></p></h1>
-
+<h1>Tổng tiền: <p id="sum">0</p></h1>
+<h1>Số lượng: <p id="count">0</p></h1>
+<button onclick="thanhToan() ">Thanh toán</button>
 <script>
-
-
+    function thanhToan() {
+        alert("Bạn cần thanh toán:" + sum.innerText +", và tổng số sản phẩm là: "+count.innerText);
+        sum.innerText = 0;
+        count.innerText = 0;
+    }
     class Product {
         constructor(id, ten, gia, anh) {
             this.id = id;
@@ -28,24 +31,24 @@
     let p6 = new Product(6, "Yasuo", 1800, "img/6.jpg");
     let p7 = new Product(7, "Ziggs", 2000, "img/7.jpg");
     let p8 = new Product(8, "LuLi", 1200, "img/8.jpg");
-
     let arrProduct = [p1, p2, p3, p4, p5, p6, p7, p8];
     let str = '';
-
     for (let i = 0; i < arrProduct.length; i++) {
-        str += '<hr>';
-        str += arrProduct[i].ten;
+        str += '<hr>'
+        str += '<h1>'+arrProduct[i].ten+'</h1>'
+        str += '<h2>'+arrProduct[i].gia+'</h2>'
+        str += '<button onclick="addToCart('+i+')">Click me OK???</button>'
 
-        //
-        // str += '<br>';
-        // str += arrProduct[i].gia;
-        // str += '<br>';
-        // str += '<button type="submit" onclick="addToCart('+i+')">Add</button>';
     }
 
     function addToCart(id) {
-        sum.innerText = +sum.innerText + arrProduct[id].gia;
-        count.innerText = +count.innerText + 1;
+        sumInt = +sum.innerText;
+        sumInt += arrProduct[id].gia;
+        sum.innerText = sumInt;
+
+        countInt = +count.innerText;
+        countInt++;
+        count.innerText = countInt;
     }
 
     document.write(str);
