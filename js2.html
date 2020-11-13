@@ -5,50 +5,15 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Tổng tiền: <p id="sum"></p></h1>
-<h1>Số lượng: <p id="count"></p></h1>
-
+<input id="name" >
+<input id="pass" >
+<button onclick="Check()">Check</button>
 <script>
-
-
-    class Product {
-        constructor(id, ten, gia, anh) {
-            this.id = id;
-            this.ten = ten;
-            this.gia = gia;
-            this.anh = anh;
-        }
+    let reg = /2[0-4]/;
+    function Check() {
+        alert(reg.test(document.getElementById("name").value));
+        alert(reg.test(document.getElementById("pass").value));
     }
-
-    let p1 = new Product(1, "LuCi", 1000, "img/1.jpg");
-    let p2 = new Product(2, "MewTwo", 2000, "img/2.jpg");
-    let p3 = new Product(3, "Pikachu", 600, "img/3.jpg");
-    let p4 = new Product(4, "Garen", 300, "img/4.jpg");
-    let p5 = new Product(5, "Rengar", 1600, "img/5.jpg");
-    let p6 = new Product(6, "Yasuo", 1800, "img/6.jpg");
-    let p7 = new Product(7, "Ziggs", 2000, "img/7.jpg");
-    let p8 = new Product(8, "LuLi", 1200, "img/8.jpg");
-
-    let arrProduct = [p1, p2, p3, p4, p5, p6, p7, p8];
-    let str = '';
-
-    for (let i = 0; i < arrProduct.length; i++) {
-        str += '<hr>';
-        str += arrProduct[i].ten;
-
-        //
-        // str += '<br>';
-        // str += arrProduct[i].gia;
-        // str += '<br>';
-        // str += '<button type="submit" onclick="addToCart('+i+')">Add</button>';
-    }
-
-    function addToCart(id) {
-        sum.innerText = +sum.innerText + arrProduct[id].gia;
-        count.innerText = +count.innerText + 1;
-    }
-
-    document.write(str);
 </script>
 </body>
 </html>

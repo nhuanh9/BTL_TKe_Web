@@ -1,0 +1,87 @@
+.menu{
+    width: 100%;
+    height: 50px;
+    background: lightblue;
+}
+.content{
+    width: 100%;
+    height: 700px;
+}
+.left{
+    width: 20%;
+    height: 700px;
+    background: gray;
+    float: left;
+}
+.mid{
+    width: 60%;
+    height: 700px;
+    float: left;
+    background: yellow;
+}
+.mid1{
+    width: 100%;
+    height: 160px;
+    float: left;
+    background: #eaeaa8;
+}
+.story {
+    width: 16%;
+    height: 156px;
+    float: left;
+    background: #f3f3dd;
+    border: 1px solid;
+    border-radius: 5px;
+    margin: 2px;
+}
+.hinhtron {
+    border-radius: 50%;
+    border: 3px solid;
+    margin: 20px;
+    width: 30px;
+    height: 30px;
+}
+.mid2{
+    width: 100%;
+    height: 80px;
+    float: left;
+    background: #9c9c15;
+}
+.mid3{
+    width: 100%;
+    height: 40px;
+    float: left;
+    background: #739ce3;
+}
+.mid4{
+    width: 100%;
+    height: 420px;
+    float: left;
+    background: #aa55c2;
+}
+.right{
+    width: 20%;
+    height: 700px;
+    float: left;
+    background: red;
+}
+@media only screen and (max-width: 900px) {
+    .menu{
+        background: purple;
+    }
+    .left {
+        display: none;
+    }
+    .mid{
+        width: 80%;
+    }
+}
+@media only screen and (max-width: 400px) {
+
+    .right {
+        display: none;
+    }
+    .mid{
+        width: 100%;
+    }
+}
